@@ -14,7 +14,8 @@ class TurnFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'turn_date' => $this->faker->dateTime(),
+            'active' => $this->faker->boolean(),
         ];
     }
 }
