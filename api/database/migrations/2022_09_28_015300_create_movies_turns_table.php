@@ -15,7 +15,17 @@ class CreateMoviesTurnsTable extends Migration
     {
         Schema::create('movies_turns', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('movie_id');
+            $table->foreign('movie_id')->references('id')->on('movies');
+
+            $table->unsignedBigInteger('turn_id');
+            $table->foreign('turn_id')->references('id')->on('turns');
+
             $table->timestamps();
+
+
+
+
         });
     }
 
