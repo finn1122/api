@@ -23,5 +23,24 @@
             </div>
         </section>
     </div>
+
+    <body class="bg-gray-100 text-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-3 my-10">
+                @foreach($movies as $movie)
+                    <div class="bg-white hover:bg-blue-100 border border-gray-200 p-5">
+                        <h2 class="font-bold text-lg mb-4">{{$movie->name}}</h2>
+                        <p class="text-xs">{{$movie->publication_date}}</p>
+                        <p class="text-xs text-right">{{$movie->created_at}}</p>
+                    </div>
+                @endforeach
+            </div>
+            <div class="mb-10">
+                {{ $movies->links() }}
+            </div>
+
+        </div>
+        
+    </body>
 </main>
 @endsection

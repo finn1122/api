@@ -15,11 +15,14 @@ class MoviesTurnFactory extends Factory
      *
      * @return array
      */
+
+    //protected $model = MoviesTurn::class;
+
     public function definition()
     {
         return [
-            'movie_id' => Movie::all()->random(1)->id,
-            'turn_id' => Turn::all()->random(1)->id,
+            'movie_id' => Movie::all()->unique()->random()->id,
+            'turn_id' => Turn::all()->unique()->random()->id,
 
         ];
     }

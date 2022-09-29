@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class MoviesTurn extends Model
 {
     use HasFactory;
+
+    protected $fillable = ["movie_id", "turn_id"];
 }
