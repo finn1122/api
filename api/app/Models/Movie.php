@@ -10,9 +10,9 @@ class Movie extends Model
     use HasFactory;
     protected $fillable = ["name", "publication_date", "image"];
 
-    /*public function getNameAttribute(){
-        return $this->name;
-    }*/
+    public function turns(){
+        return $this->belongsTo(Turn::class);
+    }
 
 
     public function getPubicationDateAttribute()
