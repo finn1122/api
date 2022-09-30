@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\MovieController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
-
+Route::resource("movies", MovieController::class);
 Route::get('/home', [\App\Http\Controllers\MovieController::class, 'index'])->name('home');
 
 
