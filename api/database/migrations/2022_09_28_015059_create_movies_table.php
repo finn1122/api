@@ -18,6 +18,7 @@ class CreateMoviesTable extends Migration
             $table->string('name')->unique();
             $table->date('publication_date');
             $table->string('image');
+            $table->boolean('active');
             $table->timestamps();
         });
     }

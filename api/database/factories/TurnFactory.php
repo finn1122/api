@@ -18,6 +18,7 @@ class TurnFactory extends Factory
         return [
             'turn' => $this->faker->time(),
             'active' => $this->faker->boolean(),
+
         ];
     }
 }

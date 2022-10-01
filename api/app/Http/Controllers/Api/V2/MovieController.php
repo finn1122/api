@@ -84,6 +84,9 @@ class MovieController extends Controller
         $validator = Validator::make($request->all(), [
             "name" => "max:140|unique:movies,name," . $movie->id,
             "publication_date" => "date_format:Y-m-d",
+            "image" => "string",
+            "active" => "boolean",
+
         ]);
 
         //verificar si hay errores en el request
@@ -92,11 +95,10 @@ class MovieController extends Controller
                 'message' => $validator->errors(),
             ]);
         }else{
-            $movie->fill($request->only("name","publication_date"))->save();
+            $movie->fill($request->only("name","publication_date","image", "active"))->save();
             return new MovieResource($movie);
         }
-        $movie->fill($request->only("name","publication_date"))->save();
-        return new MovieResource($movie);
+
         
         
     }
@@ -113,7 +115,7 @@ class MovieController extends Controller
             $movie->delete();
             return response()->json([
                 'message' => 'success',
-            ], 204);
+            ]);
 
         }catch(\Exception $exception){
 

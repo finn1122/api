@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Movie extends Model
 {
     use HasFactory;
-    protected $fillable = ["name", "publication_date", "image"];
+    protected $fillable = ["name", "publication_date", "image", "active"];
 
     public function turns(){
         return $this->belongsTo(Turn::class);
