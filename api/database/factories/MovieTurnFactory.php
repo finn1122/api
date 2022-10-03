@@ -8,7 +8,7 @@ use App\Models\Turn;
 
 
 
-class MoviesTurnFactory extends Factory
+class MovieTurnFactory extends Factory
 {
     /**
      * Define the model's default state.

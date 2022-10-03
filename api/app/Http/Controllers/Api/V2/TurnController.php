@@ -38,7 +38,7 @@ class TurnController extends Controller
     {
         //validar que las variables se envien por el request
         $validator = Validator::make($request->all(), [
-            "turn" => "required|date_format:H:i:s|unique:turns",
+            "turn" => "required",
             "active" => "required|boolean",
         ]);
 
@@ -75,7 +75,7 @@ class TurnController extends Controller
     {
         //validar que las variables se envien por el request
         $validator = Validator::make($request->all(), [
-            "turn" => "date_format:H:i:s|unique:turns,turn," . $turn->id,
+            "turn" => "date_format:H:i:s," . $turn->id,
             "active" => "boolean",
         ]);
 
