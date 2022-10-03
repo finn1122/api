@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
          \App\Models\User::factory(60)->create();
          \App\Models\Movie::factory(60)->create();
          \App\Models\Turn::factory(60)->create();
-         \App\Models\MoviesTurn::factory(60)->create();
+         \App\Models\MovieTurn::factory(60)->create();
 
 
     }

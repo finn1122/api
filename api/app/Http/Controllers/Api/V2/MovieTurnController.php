@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Api\V2;
 
 use App\Http\Controllers\Controller;
-use App\Models\MoviesTurn;
+use App\Models\MovieTurn;
 use Illuminate\Http\Request;
 
-use App\Http\Resource\V2\MovieTurnResource;
-use App\Http\Resource\V2\MovieTurnCollection;
+use App\Http\Resources\V2\MovieTurnCollection;
+use App\Http\Resources\V2\MovieTurnResource;
+
+//importar libreria para validar request
+use Validator;
 
 
 
@@ -20,7 +23,7 @@ class MovieTurnController extends Controller
      */
     public function index()
     {
-        //
+        return new MovieTurnCollection(MovieTurn::latest()->paginate());
     }
 
     /**
@@ -31,28 +34,42 @@ class MovieTurnController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         //validar que las variables se envien por el request
+         $validator = Validator::make($request->all(), [
+            "movie_id" => "required|integer",
+            "turn_id" => "required|integer",
+        ]);
+
+        //verificar si hay errores en el request
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => $validator->errors(),
+            ]);
+        }else{
+            $movieTurn = MovieTurn::create($request->all());
+            return new MovieTurnResource($movieTurn);
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MoviesTurn  $moviesTurn
+     * @param  \App\Models\MovieTurn  $movieTurn
      * @return \Illuminate\Http\Response
      */
-    public function show(MoviesTurn $moviesTurn)
+    public function show(MovieTurn $movieTurn)
     {
-        return new MoviesTurnResource($moviesTurn);
+        return new MovieTurnResource($movieTurn);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MoviesTurn  $moviesTurn
+     * @param  \App\Models\MovieTurn  $movieTurn
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MoviesTurn $moviesTurn)
+    public function update(Request $request, MovieTurn $movieTurn)
     {
         //
     }
@@ -60,10 +77,10 @@ class MovieTurnController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MoviesTurn  $moviesTurn
+     * @param  \App\Models\MovieTurn  $movieTurn
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MoviesTurn $moviesTurn)
+    public function destroy(MovieTurn $movieTurn)
     {
         //
     }

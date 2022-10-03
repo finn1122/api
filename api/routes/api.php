@@ -32,7 +32,7 @@ Route::apiResource('v2/turns',TurnV2::class)
     ->middleware(['auth:sanctum']);
 
 //V2 movie turn
-Route::apiResource('v2/movieTurns',MovieTurnController::class)
+Route::apiResource('v2/movieTurn', MovieTurnController::class)
 ->only(['index','show','store','destroy','update'])
 ->middleware(['auth:sanctum']);
 

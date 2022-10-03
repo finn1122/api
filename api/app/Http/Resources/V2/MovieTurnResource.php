@@ -14,16 +14,15 @@ class MovieTurnResource extends JsonResource
      */
     public function toArray($request)
     {
-        //return parent::toArray($request);
         return [
             'id' => $this->id,
-            'movie_id' => $this->movies->name,
-            'turn_id' => $this->movies->name,
-            'author' => [
-                'name' => $this->user->name,
-                'email' => $this->user->email,
+            'movie_id' => $this->movie_id,
+            'turn_id' => $this->turn_id,
+            'autor'  => [
+                'name' => 'mauro'
             ],
+            'created_at' => $this->created_at
 
-        ];
+        ];    
     }
 }
